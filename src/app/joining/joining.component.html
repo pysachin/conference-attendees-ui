@@ -46,10 +46,12 @@
             id="jnf-referal-source"
             aria-label="Floating label select example"
           >
+            @if(referrals$ | async; as referrals){ @for (referral of referrals;
+            track $index) {
+            <option value="referrals.id">{{ referral.name }}</option>
+            } }@else {
             <option selected>--</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            }
           </select>
           <label for="jnf-referal-source">Referral Source</label>
         </div>
@@ -59,10 +61,12 @@
             id="jnf-job-role"
             aria-label="Floating label select example"
           >
+            @if(jobRoles$ | async; as jobRoles){ @for (jobRole of jobRoles;
+            track $index) {
+            <option value="jobRole.id">{{ jobRole.name }}</option>
+            } }@else {
             <option selected>--</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            }
           </select>
           <label for="jnf-job-role">Job Roles</label>
         </div>
@@ -72,10 +76,12 @@
             id="jnf-gender"
             aria-label="Floating label select example"
           >
+            @if(genders$ | async; as genders){ @for (gender of genders; track
+            $index) {
+            <option value="gender.id">{{ gender.name }}</option>
+            } }@else {
             <option selected>--</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            }
           </select>
           <label for="jnf-gender">Gender</label>
         </div>

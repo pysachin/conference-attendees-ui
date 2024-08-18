@@ -17,6 +17,6 @@ COPY ./nginx.conf /etc/nginx/conf.d
 COPY --from=build /usr/src/app/dist/conference-attendees-ui/browser /usr/share/nginx/html/conference-attendees-ui
 COPY --from=build /usr/src/app/dist/conference-attendees-ui/server/server.mjs /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 8084
 
 CMD ["nginx", "-g", "daemon off;"]
