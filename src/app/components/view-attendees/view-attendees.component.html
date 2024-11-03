@@ -1,0 +1,6 @@
+<p>view-attendees works!</p>
+@for (attendee of attendees$ | async; track $index) {
+<h1>{{ attendee.firstName }}</h1>
+}@empty {
+<h1>No Attendees Found</h1>
+}

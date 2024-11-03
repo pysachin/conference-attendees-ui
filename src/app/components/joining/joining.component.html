@@ -3,13 +3,20 @@
     <div class="col-1"></div>
     <div class="col">
       <h1>IT Conference Joining Form</h1>
-      <form class="row g-2 needs-validation">
+      <form
+        [formGroup]="joiningForm"
+        class="row g-2 needs-validation"
+        (ngSubmit)="onSubmit()"
+      >
         <div class="form-floating">
           <input
             type="text"
             class="form-control"
             id="jnf-first-name"
             placeholder=""
+            formControlName="firstName"
+            appShowError
+            [appformControl]="joiningForm.controls.firstName"
           />
           <label for="jnf-first-name">First Name</label>
         </div>
@@ -19,6 +26,7 @@
             class="form-control"
             id="jnf-last-name"
             placeholder=""
+            formControlName="lastName"
           />
           <label for="jnf-last-name">Last Name</label>
         </div>
@@ -28,6 +36,7 @@
             class="form-control"
             id="jnf-email-address"
             placeholder=""
+            formControlName="email"
           />
           <label for="jnf-email-address">Email Address</label>
         </div>
@@ -37,6 +46,7 @@
             class="form-control"
             id="jnf-phone-number"
             placeholder=""
+            formControlName="phone"
           />
           <label for="jnf-phone-number">Phone Number</label>
         </div>
@@ -45,10 +55,12 @@
             class="form-select"
             id="jnf-referal-source"
             aria-label="Floating label select example"
+            formControlName="referralId"
           >
+            <option value="">{{ "Select" }}</option>
             @if(referrals$ | async; as referrals){ @for (referral of referrals;
             track $index) {
-            <option value="referrals.id">{{ referral.name }}</option>
+            <option [value]="referral.id">{{ referral.name }}</option>
             } }@else {
             <option selected>--</option>
             }
@@ -60,10 +72,12 @@
             class="form-select"
             id="jnf-job-role"
             aria-label="Floating label select example"
+            formControlName="jobRoleId"
           >
+            <option value="">{{ "Select" }}</option>
             @if(jobRoles$ | async; as jobRoles){ @for (jobRole of jobRoles;
             track $index) {
-            <option value="jobRole.id">{{ jobRole.name }}</option>
+            <option [value]="jobRole.id">{{ jobRole.name }}</option>
             } }@else {
             <option selected>--</option>
             }
@@ -75,10 +89,12 @@
             class="form-select"
             id="jnf-gender"
             aria-label="Floating label select example"
+            formControlName="genderId"
           >
+            <option value="">{{ "Select" }}</option>
             @if(genders$ | async; as genders){ @for (gender of genders; track
             $index) {
-            <option value="gender.id">{{ gender.name }}</option>
+            <option [value]="gender.id">{{ gender.name }}</option>
             } }@else {
             <option selected>--</option>
             }
