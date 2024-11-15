@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UtilityService } from '../../../services/utility.service';
-import { first, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { JobRole } from '../../../models/job-role';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Gender } from '../../../models/gender';
 import { ReferralSources } from '../../../models/referral';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import { ShowFcErrorDirective } from '../../directives/show-fc-error.directive';
 @Component({
   selector: 'app-joining',
   standalone: true,
-  imports: [AsyncPipe,ReactiveFormsModule,ShowFcErrorDirective],
+  imports: [AsyncPipe,ReactiveFormsModule,ShowFcErrorDirective,JsonPipe],
   templateUrl: './joining.component.html',
   styleUrl: './joining.component.css',
 })

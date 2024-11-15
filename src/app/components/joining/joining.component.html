@@ -17,8 +17,10 @@
             formControlName="firstName"
             appShowError
             [appformControl]="joiningForm.controls.firstName"
+            error-id="jnf-first-name-error"
           />
           <label for="jnf-first-name">First Name</label>
+          <span id="jnf-first-name-error" style="color: #d8000c"> </span>
         </div>
         <div class="form-floating">
           <input
