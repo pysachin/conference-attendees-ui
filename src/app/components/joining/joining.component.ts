@@ -2,19 +2,20 @@ import { Component } from '@angular/core';
 import { UtilityService } from '../../../services/utility.service';
 import { Observable } from 'rxjs';
 import { JobRole } from '../../../models/job-role';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Gender } from '../../../models/gender';
 import { ReferralSources } from '../../../models/referral';
 import { FormBuilder, Validators } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ShowFcErrorDirective } from '../../directives/show-fc-error.directive';
-
+import  {NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask, provideNgxMask} from 'ngx-mask'
 @Component({
   selector: 'app-joining',
   standalone: true,
-  imports: [AsyncPipe,ReactiveFormsModule,ShowFcErrorDirective,JsonPipe],
+  imports: [AsyncPipe,ReactiveFormsModule,ShowFcErrorDirective,NgxMaskDirective],
   templateUrl: './joining.component.html',
   styleUrl: './joining.component.css',
+  providers:[provideNgxMask()]
 })
 export class JoiningComponent {
 
@@ -30,8 +31,15 @@ export class JoiningComponent {
                   ]
               ],
     lastName: [''],
-    email: [''],
-    phone: [''],
+    email: ['',[
+                Validators.required,
+                Validators.email                
+              ]
+          ],
+    phone: ['',[
+                Validators.required                
+              ]
+    ],
     referralId: [''],
     jobRoleId: [''],
     genderId: [''],

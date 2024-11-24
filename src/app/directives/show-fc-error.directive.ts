@@ -16,12 +16,14 @@ export class ShowFcErrorDirective {
               @Inject(DOCUMENT) private document: Document
             ) { }
 
-  @HostListener('window:keyup') onKeyDown() {
+  @HostListener('keyup') onKeyDown() {
     this.checkErrorInFormControl()        
   } 
 
   checkErrorInFormControl(){
-      if(this.appformControl instanceof FormControl){             
+      if(this.appformControl instanceof FormControl)
+      {             
+        console.log(this.appformControl?.errors);
         if(this.appformControl?.errors &&
           this.appformControl.errors['required'] == true)
         {
@@ -36,6 +38,16 @@ export class ShowFcErrorDirective {
           this.appformControl.errors['maxlength'])
         {
           this.setErrorState(`This field should not exceed max length than ${this.appformControl.errors['maxlength'].requiredLength}`);
+        }
+        else if(this.appformControl?.errors &&
+          this.appformControl.errors['email'] == true)
+        {
+          this.setErrorState(`Please enter valid email address`);
+        }
+        else if(this.appformControl?.errors &&
+          this.appformControl.errors['mask'])
+        {
+          this.setErrorState(`Please enter valid format ${this.appformControl.errors['mask']['requiredMask']}`);
         }
         else{                          
           this.resetState();

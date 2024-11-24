@@ -34,23 +34,32 @@
         </div>
         <div class="form-floating">
           <input
-            type="text"
+            type="email"
             class="form-control"
             id="jnf-email-address"
             placeholder=""
             formControlName="email"
+            appShowError
+            [appformControl]="joiningForm.controls.email"
+            error-id="jnf-first-email-error"
           />
           <label for="jnf-email-address">Email Address</label>
+          <span id="jnf-first-email-error" style="color: #d8000c"> </span>
         </div>
         <div class="form-floating">
           <input
-            type="tel"
+            type="text"
             class="form-control"
             id="jnf-phone-number"
             placeholder=""
             formControlName="phone"
+            mask="+00 0000000000"
+            appShowError
+            [appformControl]="joiningForm.controls.phone"
+            error-id="jnf-phone-number-error"
           />
           <label for="jnf-phone-number">Phone Number</label>
+          <span id="jnf-phone-number-error" style="color: #d8000c"> </span>
         </div>
         <div class="form-floating">
           <select
