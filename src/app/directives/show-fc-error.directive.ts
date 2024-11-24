@@ -19,6 +19,9 @@ export class ShowFcErrorDirective {
   @HostListener('keyup') onKeyDown() {
     this.checkErrorInFormControl()        
   } 
+  @HostListener('click') onDragOver() {
+    this.checkErrorInFormControl()        
+  } 
 
   checkErrorInFormControl(){
       if(this.appformControl instanceof FormControl)

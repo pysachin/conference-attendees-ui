@@ -42,7 +42,10 @@ export class JoiningComponent {
     ],
     referralId: [''],
     jobRoleId: [''],
-    genderId: [''],
+    genderId: ['',[
+                  Validators.required                
+                ]
+    ],
   });
 
   constructor(private utilityService : UtilityService,

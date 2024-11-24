@@ -64,6 +64,27 @@
         <div class="form-floating">
           <select
             class="form-select"
+            id="jnf-gender"
+            aria-label="Floating label select example"
+            formControlName="genderId"
+            appShowError
+            [appformControl]="joiningForm.controls.genderId"
+            error-id="jnf-gender-error"
+          >
+            <option value="">{{ "Select" }}</option>
+            @if(genders$ | async; as genders){ @for (gender of genders; track
+            $index) {
+            <option [value]="gender.id">{{ gender.name }}</option>
+            } }@else {
+            <option selected>--</option>
+            }
+          </select>
+          <label for="jnf-gender">Gender</label>
+          <span id="jnf-gender-error" style="color: #d8000c"> </span>
+        </div>
+        <div class="form-floating">
+          <select
+            class="form-select"
             id="jnf-referal-source"
             aria-label="Floating label select example"
             formControlName="referralId"
@@ -94,23 +115,6 @@
             }
           </select>
           <label for="jnf-job-role">Job Roles</label>
-        </div>
-        <div class="form-floating">
-          <select
-            class="form-select"
-            id="jnf-gender"
-            aria-label="Floating label select example"
-            formControlName="genderId"
-          >
-            <option value="">{{ "Select" }}</option>
-            @if(genders$ | async; as genders){ @for (gender of genders; track
-            $index) {
-            <option [value]="gender.id">{{ gender.name }}</option>
-            } }@else {
-            <option selected>--</option>
-            }
-          </select>
-          <label for="jnf-gender">Gender</label>
         </div>
         <div>
           <button class="btn btn-primary" type="submit">Submit form</button>
