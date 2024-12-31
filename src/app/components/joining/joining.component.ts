@@ -9,10 +9,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ShowFcErrorDirective } from '../../directives/show-fc-error.directive';
 import  {NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask, provideNgxMask} from 'ngx-mask'
+import { Attendee } from '../../model/attendee.model';
+import { Store } from '@ngrx/store';
+import { addAttendee } from '../../store/actions/attendees.action';
+import { ViewAttendeesComponent } from "../view-attendees/view-attendees.component";
 @Component({
   selector: 'app-joining',
   standalone: true,
-  imports: [AsyncPipe,ReactiveFormsModule,ShowFcErrorDirective,NgxMaskDirective],
+  imports: [AsyncPipe, ReactiveFormsModule, ShowFcErrorDirective, NgxMaskDirective, ViewAttendeesComponent],
   templateUrl: './joining.component.html',
   styleUrl: './joining.component.css',
   providers:[provideNgxMask()]
@@ -49,7 +53,8 @@ export class JoiningComponent {
   });
 
   constructor(private utilityService : UtilityService,
-              private fb: FormBuilder
+              private fb: FormBuilder,
+              private store:Store<{attendees:Attendee[]}>
   ){
   }
 
@@ -60,8 +65,23 @@ export class JoiningComponent {
   }
 
   onSubmit() {
+    if (this.joiningForm.invalid) {
+      return;
+    }
     // TODO: Use EventEmitter with form value
     console.warn(this.joiningForm);
     console.warn(this.joiningForm.value);
+
+    const attendee: Attendee = {
+      firstName: this.joiningForm?.value?.firstName ?? '',
+      lastName: this.joiningForm?.value?.lastName ?? '',
+      email: this.joiningForm?.value?.email ?? '',
+      phone: this.joiningForm?.value?.phone ?? '',
+      referralId: this.joiningForm?.value?.referralId ?? '',
+      jobRoleId: this.joiningForm?.value?.jobRoleId ?? '',
+      genderId: this.joiningForm?.value?.genderId ?? ''   
+    };
+
+    this.store.dispatch(addAttendee({attendee}));
   }
 }

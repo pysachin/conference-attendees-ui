@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Attendee } from '../../model/attendee.model';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { seleectAttendees } from '../../store/selectors/attendees.selector';
 
 @Component({
   selector: 'app-view-attendees',
@@ -16,7 +17,7 @@ export class ViewAttendeesComponent {
   attendees$:Observable<Attendee[]>;
 
   constructor(private store:Store<{attendees:Attendee[]}>){
-    this.attendees$ = store.select("attendees");
+    this.attendees$ = store.select(seleectAttendees);
   }
 
 }

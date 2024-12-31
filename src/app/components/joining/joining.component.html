@@ -117,10 +117,19 @@
           <label for="jnf-job-role">Job Roles</label>
         </div>
         <div>
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="joiningForm.invalid"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>
-    <div class="col-1"></div>
+    <div class="col-1">
+      <h1>Attendees</h1>
+      <app-view-attendees></app-view-attendees>
+    </div>
   </div>
 </div>

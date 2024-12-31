@@ -3,7 +3,7 @@ export interface Attendee {
     lastName:string,
     email:string,
     phone:string,
-    refrenceId:string,
+    referralId:string,
     jobRoleId:string,
     genderId:string,
 }

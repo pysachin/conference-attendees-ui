@@ -7,7 +7,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import {provideStore} from '@ngrx/store'
 import {provideEffects} from '@ngrx/effects'
 import {provideStoreDevtools} from '@ngrx/store-devtools'
-import { attendeesReducer } from './store/reducer/attendees.reducer';
+import { attendeesReducer } from './store/reducers/attendees.reducer';
 export const appConfig: ApplicationConfig = {
   providers: [
                 provideZoneChangeDetection({ eventCoalescing: true }), 

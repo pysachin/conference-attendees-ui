@@ -9,7 +9,7 @@ import { ViewAttendeesComponent } from "./components/view-attendees/view-attende
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
+    styleUrls: ['./app.component.css'],
     imports: [RouterOutlet, RouterLink, NavbarComponent, ViewAttendeesComponent]
 })
 export class AppComponent {
